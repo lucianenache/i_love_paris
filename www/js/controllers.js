@@ -52,7 +52,14 @@ angular.module('controllers', [])
       }, {
             scope: $scope,
             animation: 'slide-in-up'
-      });  
+      });
+
+      $ionicModal.fromTemplateUrl('templates/schedule-modal.html', function($ionicModal) {
+              $scope.scheduleModal = $ionicModal;
+      }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+      });    
 
 	$scope.loadDescription = function() {
              $scope.name = $scope.activity[0].name;
@@ -64,6 +71,11 @@ angular.module('controllers', [])
       $scope.loadContact = function() {
                     $scope.url = $sce.trustAsHtml($scope.activity[0].websiteUrl);
                     $scope.contactModal.show();
+      }
+
+
+      $scope.loadSchedule = function() {
+                    $scope.scheduleModal.show();
       }
 
        function loadItems (items){
