@@ -27,7 +27,7 @@ angular.module('controllers', [])
 
 })
 
-.controller('ActivityCtrl',[ '$scope' ,'$stateParams', 'ParisApi', function($scope,$stateParams, ParisApi) {
+.controller('ActivityCtrl',[ '$scope' ,'$stateParams', 'ParisApi','$ionicModal','$sce', function($scope,$stateParams, ParisApi, $ionicModal ,$sce) {
 
 	 ParisApi.getActivity($stateParams.activityId).then( function(response){
 
@@ -40,4 +40,41 @@ angular.module('controllers', [])
 	 	console.log("api loaded");
         	});
 */
+	// Load the modal from the given template URL
+    	$ionicModal.fromTemplateUrl('templates/description-modal.html', function($ionicModal) {
+              $scope.descriptionModal = $ionicModal;
+    	}, {
+              scope: $scope,
+        	animation: 'slide-in-up'
+    	});  
+
+      $ionicModal.fromTemplateUrl('templates/contact-modal.html', function($ionicModal) {
+              $scope.contactModal = $ionicModal;
+      }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+      });  
+
+	$scope.loadDescription = function() {
+             $scope.name = $scope.activity[0].name;
+             $scope.description = $sce.trustAsHtml($scope.activity[0].description);
+             console.log($scope.description );
+		$scope.descriptionModal.show();
+	}
+
+      $scope.loadContact = function() {
+                    $scope.contactModal.show();
+      }
+
+       function loadItems (items){
+                        var notEmptyItems = [];
+                        for(var i = 0;i< items.length; i++){
+                          console.log("in");
+                          if(items[i] !== ""){
+                              notEmptyItems.push(items[i]);
+                          }
+                        }
+                        return notEmptyItems;
+      };
+
 }]);
