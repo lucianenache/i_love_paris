@@ -1,0 +1,16 @@
+ <div class="modal"> <div class="modal" ng-click="contactModal.hide()"> 
+
+        <header class="bar bar-header bar-positive">
+          <h1 class="title">Contact</h1>
+        </header>
+        <ion-content class="has-header" padding-top="true">
+
+          <ul class="list">	
+          	<li class="item">Address : {{activity[0].address}}</li>
+          	<li class="item">zipCode : {{activity[0].zipCode}}</li>
+          	<li class="item">phone : {{activity[0].phone}}</li>
+          	<li class="item">email : {{activity[0].email}}</li>
+          	<li class="item" ng-bind-html="url" >websiteUrl : {{url}}</li>
+          </ul>	
+        </ion-content>
+</div>
