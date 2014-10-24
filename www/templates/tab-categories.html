@@ -1,0 +1,13 @@
+
+<!--ion class="bar bar-subheader  bar-royal">
+  <h2 class="title">Categories</h2>
+</ion-->
+<ion-view >
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="category in categories" type="item-text-wrap" href="#/tab/activities/{{category.idcategories}}">
+        {{category.idcategories}} - {{category.name}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
