@@ -83,11 +83,12 @@ angular.module('starter', ['ionic', 'controllers', 'services'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/categories');
 
-}).config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
+});
+/*.config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
         GoogleMapApi.configure({
             //    key: 'your api key',
             v: '3.17',
             libraries: 'weather,geometry,visualization'
         });
     }]);
-
+*/

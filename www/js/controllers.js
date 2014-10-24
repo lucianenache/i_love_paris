@@ -27,7 +27,7 @@ angular.module('controllers', [])
 
 })
 
-.controller('ActivityCtrl',[ '$scope' '$stateParams', 'ParisApi', 'GoogleMapApi'.ns(), function($scope,$stateParams, ParisApi, GoogleMapApi) {
+.controller('ActivityCtrl',[ '$scope' ,'$stateParams', 'ParisApi', function($scope,$stateParams, ParisApi) {
 
 	 ParisApi.getActivity($stateParams.activityId).then( function(response){
 
@@ -35,9 +35,9 @@ angular.module('controllers', [])
  		console.log("activity",activity);
  		$scope.activity = activity.data;
  	});
-
+/*
 	 GoogleMapApi.then(function(maps) {
 	 	console.log("api loaded");
         	});
-
+*/
 }]);
