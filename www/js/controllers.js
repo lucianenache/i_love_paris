@@ -93,12 +93,18 @@ angular.module('controllers', [])
 
                      var mapOptions = {
                                      center: new google.maps.LatLng($scope.lat, $scope.lon),
-                                     zoom: 19,
+                                     zoom: 17,
                                     mapTypeId: google.maps.MapTypeId.ROADMAP
                           }
 
                     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
                     console.log($scope.map);
+
+                     var marker = new google.maps.Marker({
+                          map: $scope.map,
+                          position: new google.maps.LatLng($scope.lat, $scope.lon),
+                          title: $scope.activity[0].name
+                    });
            
             }  
 
