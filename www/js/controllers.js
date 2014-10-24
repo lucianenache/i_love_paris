@@ -61,6 +61,13 @@ angular.module('controllers', [])
             animation: 'slide-in-up'
       });    
 
+            $ionicModal.fromTemplateUrl('templates/location-modal.html', function($ionicModal) {
+              $scope.locationModal = $ionicModal;
+      }, {
+            scope: $scope,
+            animation: 'slide-in-up'
+      });    
+
 	$scope.loadDescription = function() {
              $scope.name = $scope.activity[0].name;
              $scope.description = $sce.trustAsHtml($scope.activity[0].description);
@@ -78,15 +85,21 @@ angular.module('controllers', [])
                     $scope.scheduleModal.show();
       }
 
-       function loadItems (items){
-                        var notEmptyItems = [];
-                        for(var i = 0;i< items.length; i++){
-                          console.log("in");
-                          if(items[i] !== ""){
-                              notEmptyItems.push(items[i]);
+      $scope.loadLocation = function() {
+
+                    $scope.lat = $scope.activity[0].lat;
+                    $scope.lon = $scope.activity[0].lon;
+                    $scope.locationModal.show();
+
+                     var mapOptions = {
+                                     center: new google.maps.LatLng($scope.lat, $scope.lon),
+                                     zoom: 19,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
                           }
-                        }
-                        return notEmptyItems;
-      };
+
+                    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                    console.log($scope.map);
+           
+            }  
 
 }]);

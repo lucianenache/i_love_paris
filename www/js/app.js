@@ -20,8 +20,14 @@ angular.module('starter', ['ionic', 'controllers', 'services'])
     }
   });
 })
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-.config(function($stateProvider, $urlRouterProvider) {
+
+  /*GoogleMapApi.configure({
+            key: 'AIzaSyD0uoLPP_RFVTNdVSu5DYOTk-zHUSCxXVw',
+            v: '3.17',
+            libraries: 'weather,geometry,visualization'
+  });   */
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -47,8 +53,6 @@ angular.module('starter', ['ionic', 'controllers', 'services'])
         }
       }
     })
-
-
 
     .state('tab.activities', {
       url: '/activities/:activitiesId',
@@ -83,7 +87,7 @@ angular.module('starter', ['ionic', 'controllers', 'services'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/categories');
 
-});
+}]);
 /*.config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
         GoogleMapApi.configure({
             //    key: 'your api key',
