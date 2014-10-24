@@ -30,7 +30,6 @@ angular.module('controllers', [])
 .controller('ActivityCtrl',[ '$scope' ,'$stateParams', 'ParisApi','$ionicModal','$sce', function($scope,$stateParams, ParisApi, $ionicModal ,$sce) {
 
 	 ParisApi.getActivity($stateParams.activityId).then( function(response){
-
  		var activity  = response.data;
  		console.log("activity",activity);
  		$scope.activity = activity.data;
@@ -63,6 +62,7 @@ angular.module('controllers', [])
 	}
 
       $scope.loadContact = function() {
+                    $scope.url = $sce.trustAsHtml($scope.activity[0].websiteUrl);
                     $scope.contactModal.show();
       }
 
